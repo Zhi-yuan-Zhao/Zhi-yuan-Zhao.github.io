@@ -680,7 +680,7 @@ const PDFViewerApplication = {
     //     title = url;
     //   }
     // }
-    this.setTitle(title);
+    this.setTitle("title");
   },
   setTitle(title = this._title) {
     this._title = title;
