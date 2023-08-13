@@ -665,21 +665,21 @@ const PDFViewerApplication = {
   },
   setTitleUsingUrl(url = "", downloadUrl = null) {
     this.url = url;
-    this.baseUrl = url.split("#")[0];
-    if (downloadUrl) {
-      this._downloadUrl = downloadUrl === url ? this.baseUrl : downloadUrl.split("#")[0];
-    }
-    if ((0, _pdfjsLib.isDataScheme)(url)) {
-      this._hideViewBookmark();
-    }
-    let title = (0, _pdfjsLib.getPdfFilenameFromUrl)(url, "");
-    if (!title) {
-      try {
-        title = decodeURIComponent((0, _pdfjsLib.getFilenameFromUrl)(url)) || url;
-      } catch {
-        title = url;
-      }
-    }
+    // this.baseUrl = url.split("#")[0];
+    // if (downloadUrl) {
+    //   this._downloadUrl = downloadUrl === url ? this.baseUrl : downloadUrl.split("#")[0];
+    // }
+    // if ((0, _pdfjsLib.isDataScheme)(url)) {
+    //   this._hideViewBookmark();
+    // }
+    // let title = (0, _pdfjsLib.getPdfFilenameFromUrl)(url, "");
+    // if (!title) {
+    //   try {
+    //     title = decodeURIComponent((0, _pdfjsLib.getFilenameFromUrl)(url)) || url;
+    //   } catch {
+    //     title = url;
+    //   }
+    // }
     this.setTitle(title);
   },
   setTitle(title = this._title) {
