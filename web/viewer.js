@@ -665,22 +665,22 @@ const PDFViewerApplication = {
   },
   setTitleUsingUrl(url = "", downloadUrl = null) {
     this.url = url;
-    // this.baseUrl = url.split("#")[0];
-    // if (downloadUrl) {
-    //   this._downloadUrl = downloadUrl === url ? this.baseUrl : downloadUrl.split("#")[0];
-    // }
-    // if ((0, _pdfjsLib.isDataScheme)(url)) {
-    //   this._hideViewBookmark();
-    // }
-    // let title = (0, _pdfjsLib.getPdfFilenameFromUrl)(url, "");
-    // if (!title) {
-    //   try {
-    //     title = decodeURIComponent((0, _pdfjsLib.getFilenameFromUrl)(url)) || url;
-    //   } catch {
-    //     title = url;
-    //   }
-    // }
-    this.setTitle("title");
+    this.baseUrl = url.split("#")[0];
+    if (downloadUrl) {
+      this._downloadUrl = downloadUrl === url ? this.baseUrl : downloadUrl.split("#")[0];
+    }
+    if ((0, _pdfjsLib.isDataScheme)(url)) {
+      this._hideViewBookmark();
+    }
+    let title = (0, _pdfjsLib.getPdfFilenameFromUrl)(url, "");
+    if (!title) {
+      try {
+        title = decodeURIComponent((0, _pdfjsLib.getFilenameFromUrl)(url)) || url;
+      } catch {
+        title = url;
+      }
+    }
+    this.setTitle(title);
   },
   setTitle(title = this._title) {
     this._title = title;
@@ -688,8 +688,7 @@ const PDFViewerApplication = {
       return;
     }
     const editorIndicator = this._hasAnnotationEditors && !this.pdfRenderingQueue.printing;
-    document.title = `${title}`;
-    // document.title = `${editorIndicator ? "* " : ""}${title}`;
+    document.title = `${editorIndicator ? "* " : ""}${title}`;
   },
   get _docFilename() {
     return this._contentDispositionFilename || (0, _pdfjsLib.getPdfFilenameFromUrl)(this.url);
@@ -1162,7 +1161,8 @@ const PDFViewerApplication = {
       }
     }
     if (pdfTitle) {
-      this.setTitle(`${pdfTitle} - ${this._contentDispositionFilename || this._title}`);
+      this.setTitle(`${this._contentDispositionFilename || this._title}`);
+      // this.setTitle(`${pdfTitle} - ${this._contentDispositionFilename || this._title}`);
     } else if (this._contentDispositionFilename) {
       this.setTitle(this._contentDispositionFilename);
     }
