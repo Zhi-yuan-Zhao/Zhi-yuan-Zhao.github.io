@@ -683,12 +683,13 @@ const PDFViewerApplication = {
     this.setTitle(title);
   },
   setTitle(title = this._title) {
-    this._title = "zzy";
+    this._title = title;
     if (this.isViewerEmbedded) {
       return;
     }
     const editorIndicator = this._hasAnnotationEditors && !this.pdfRenderingQueue.printing;
-    document.title = `${editorIndicator ? "* " : ""}${title}`;
+    document.title = `${title}`;
+    // document.title = `${editorIndicator ? "* " : ""}${title}`;
   },
   get _docFilename() {
     return this._contentDispositionFilename || (0, _pdfjsLib.getPdfFilenameFromUrl)(this.url);
