@@ -663,7 +663,7 @@ const PDFViewerApplication = {
   initPassiveLoading(file) {
     throw new Error("Not implemented: initPassiveLoading");
   },
-  setTitleUsingUrl(url = "", downloadUrl = null) {
+  setTitleUsingUrl(url = "zzy", downloadUrl = null) {
     this.url = url;
     this.baseUrl = url.split("#")[0];
     if (downloadUrl) {
